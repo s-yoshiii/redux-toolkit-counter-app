@@ -13,6 +13,10 @@ export const counterSlice = createSlice({
       state.value -= 1;
     },
     incrementByAmount: (state, action) => {
+      console.log(action);
+      if (action.payload === 0) {
+        alert("1以上の数値を設定してください");
+      }
       state.value += action.payload;
     },
   },
