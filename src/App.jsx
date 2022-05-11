@@ -1,31 +1,39 @@
+import { Button, TextField } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { decrement, increment, incrementByAmount } from "./redux/counterSlice";
+import { decrement, increment } from "./redux/counterSlice";
 
 function App() {
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState("");
+  const [amount, setAmount] = useState("");
   return (
     <div className="App">
       <h1>count:{count}</h1>
-      <input
+      <TextField
         type="number"
-        onChange={(e) => setIncrementAmount(e.target.value)}
-        value={incrementAmount}
+        helperText="数字を入力してください"
+        defaultValue={amount}
+        size="small"
+        onChange={(e) => setAmount(e.target.value)}
       />
-      <button onClick={() => dispatch(increment(Number(incrementAmount)))}>
-        +
-      </button>
-      <button onClick={() => dispatch(decrement(Number(incrementAmount)))}>
-        -
-      </button>
-      <button
-        onClick={() => dispatch(incrementByAmount(Number(incrementAmount)))}
+      <Button
+        variant="contained"
+        startIcon={<AddIcon />}
+        onClick={() => dispatch(increment(Number(amount)))}
       >
-        追加
-      </button>
+        Add
+      </Button>
+      <Button
+        variant="contained"
+        startIcon={<RemoveIcon />}
+        onClick={() => dispatch(decrement(Number(amount)))}
+      >
+        subtract
+      </Button>
     </div>
   );
 }
