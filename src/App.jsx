@@ -15,8 +15,12 @@ function App() {
         onChange={(e) => setIncrementAmount(e.target.value)}
         value={incrementAmount}
       />
-      <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
+      <button onClick={() => dispatch(increment(Number(incrementAmount)))}>
+        +
+      </button>
+      <button onClick={() => dispatch(decrement(Number(incrementAmount)))}>
+        -
+      </button>
       <button
         onClick={() => dispatch(incrementByAmount(Number(incrementAmount)))}
       >
