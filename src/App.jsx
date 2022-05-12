@@ -1,9 +1,16 @@
-import { Button, Fab, TextField } from "@mui/material";
+import {
+  Button,
+  Container,
+  Fab,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
 import { decrement, increment, reset } from "./redux/counterSlice";
 
 function App() {
@@ -11,36 +18,52 @@ function App() {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState("");
   return (
-    <div className="App">
-      <h1>count:{count}</h1>
-      <Fab
-        color="primary"
-        aria-label="add"
-        onClick={() => dispatch(increment(Number(amount)))}
+    <Container maxWidth="sm">
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ minHeight: "100vh" }}
       >
-        <AddIcon />
-      </Fab>
-      <TextField
-        type="number"
-        helperText="数字を入力してください"
-        defaultValue={amount}
-        size="small"
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <Fab
-        color="primary"
-        aria-label="decrement"
-        onClick={() => dispatch(decrement(Number(amount)))}
-      >
-        <RemoveIcon />
-      </Fab>
-      <Button
-        variant="contained"
-        onClick={() => dispatch(reset(Number(amount)))}
-      >
-        Reset
-      </Button>
-    </div>
+        <Grid item>
+          <Paper elevation={3} sx={{ minWidth: "280px", margin: "auto" }}>
+            <Typography variant="h1">count:{count}</Typography>
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Fab
+            color="primary"
+            aria-label="add"
+            onClick={() => dispatch(increment(Number(amount)))}
+          >
+            <AddIcon />
+          </Fab>
+          <TextField
+            type="number"
+            helperText="数字を入力してください"
+            defaultValue={amount}
+            size="small"
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <Fab
+            color="primary"
+            aria-label="decrement"
+            onClick={() => dispatch(decrement(Number(amount)))}
+          >
+            <RemoveIcon />
+          </Fab>
+        </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            onClick={() => dispatch(reset(Number(amount)))}
+          >
+            Reset
+          </Button>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
