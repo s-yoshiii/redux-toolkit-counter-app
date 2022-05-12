@@ -1,10 +1,10 @@
-import { Button, TextField } from "@mui/material";
+import { Button, Fab, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { decrement, increment } from "./redux/counterSlice";
+import { decrement, increment, reset } from "./redux/counterSlice";
 
 function App() {
   const count = useSelector((state) => state.counter.value);
@@ -13,6 +13,13 @@ function App() {
   return (
     <div className="App">
       <h1>count:{count}</h1>
+      <Fab
+        color="primary"
+        aria-label="add"
+        onClick={() => dispatch(increment(Number(amount)))}
+      >
+        <AddIcon />
+      </Fab>
       <TextField
         type="number"
         helperText="数字を入力してください"
@@ -20,19 +27,18 @@ function App() {
         size="small"
         onChange={(e) => setAmount(e.target.value)}
       />
-      <Button
-        variant="contained"
-        startIcon={<AddIcon />}
-        onClick={() => dispatch(increment(Number(amount)))}
-      >
-        Add
-      </Button>
-      <Button
-        variant="contained"
-        startIcon={<RemoveIcon />}
+      <Fab
+        color="primary"
+        aria-label="decrement"
         onClick={() => dispatch(decrement(Number(amount)))}
       >
-        subtract
+        <RemoveIcon />
+      </Fab>
+      <Button
+        variant="contained"
+        onClick={() => dispatch(reset(Number(amount)))}
+      >
+        Reset
       </Button>
     </div>
   );
