@@ -21,6 +21,7 @@ function App() {
     <Container maxWidth="sm">
       <Grid
         container
+        spacing={4}
         direction="column"
         justifyContent="center"
         alignItems="center"
