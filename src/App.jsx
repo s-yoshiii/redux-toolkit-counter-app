@@ -27,8 +27,17 @@ function App() {
         sx={{ minHeight: "100vh" }}
       >
         <Grid item>
-          <Paper elevation={3} sx={{ minWidth: "280px", margin: "auto" }}>
-            <Typography variant="h1">count:{count}</Typography>
+          <Paper
+            elevation={3}
+            sx={{
+              minWidth: "280px",
+              margin: "auto",
+              p: 2,
+              textAlign: "center",
+            }}
+          >
+            <Typography variant="h5">count</Typography>
+            <Typography variant="h1">{count}</Typography>
           </Paper>
         </Grid>
         <Grid item>
