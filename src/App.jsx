@@ -4,6 +4,7 @@ import {
   Fab,
   Grid,
   Paper,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -42,27 +43,31 @@ function App() {
           </Paper>
         </Grid>
         <Grid item>
-          <Fab
-            color="primary"
-            aria-label="add"
-            onClick={() => dispatch(increment(Number(amount)))}
-          >
-            <AddIcon />
-          </Fab>
-          <TextField
-            type="number"
-            helperText="数字を入力してください"
-            defaultValue={amount}
-            size="small"
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <Fab
-            color="primary"
-            aria-label="decrement"
-            onClick={() => dispatch(decrement(Number(amount)))}
-          >
-            <RemoveIcon />
-          </Fab>
+          <Stack direction="row" spacing={2}>
+            <Fab
+              color="primary"
+              aria-label="add"
+              size="medium"
+              onClick={() => dispatch(increment(Number(amount)))}
+            >
+              <AddIcon />
+            </Fab>
+            <TextField
+              type="number"
+              defaultValue={amount}
+              size="small"
+              sx={{ width: 100 }}
+              onChange={(e) => setAmount(e.target.value)}
+            />
+            <Fab
+              color="primary"
+              size="medium"
+              aria-label="decrement"
+              onClick={() => dispatch(decrement(Number(amount)))}
+            >
+              <RemoveIcon />
+            </Fab>
+          </Stack>
         </Grid>
         <Grid item>
           <Button
