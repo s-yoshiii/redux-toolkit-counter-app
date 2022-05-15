@@ -6,6 +6,7 @@ import {
   Paper,
   Stack,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -43,30 +44,56 @@ function App() {
           </Paper>
         </Grid>
         <Grid item>
-          <Stack direction="row" spacing={2}>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="medium"
-              onClick={() => dispatch(increment(Number(amount)))}
+          <Stack direction="row" spacing={4}>
+            <Tooltip
+              title={
+                amount === ""
+                  ? `1づつ減算されます`
+                  : `${amount}づつ減算されます`
+              }
+              arrow
+              placement="top"
             >
-              <AddIcon />
-            </Fab>
-            <TextField
-              type="number"
-              defaultValue={amount}
-              size="small"
-              sx={{ width: 100 }}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-            <Fab
-              color="primary"
-              size="medium"
-              aria-label="decrement"
-              onClick={() => dispatch(decrement(Number(amount)))}
+              <Fab
+                color="primary"
+                size="medium"
+                aria-label="decrement"
+                onClick={() => dispatch(decrement(Number(amount)))}
+              >
+                <RemoveIcon />
+              </Fab>
+            </Tooltip>
+            <Tooltip
+              title="入力した値ごとのカウントができます"
+              arrow
+              placement="top"
             >
-              <RemoveIcon />
-            </Fab>
+              <TextField
+                type="number"
+                defaultValue={amount}
+                size="small"
+                sx={{ width: 100 }}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </Tooltip>
+            <Tooltip
+              title={
+                amount === ""
+                  ? `1づつ加算されます`
+                  : `${amount}づつ加算されます`
+              }
+              arrow
+              placement="top"
+            >
+              <Fab
+                color="primary"
+                aria-label="add"
+                size="medium"
+                onClick={() => dispatch(increment(Number(amount)))}
+              >
+                <AddIcon />
+              </Fab>
+            </Tooltip>
           </Stack>
         </Grid>
         <Grid item>
