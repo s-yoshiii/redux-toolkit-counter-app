@@ -15,14 +15,35 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, reset } from "./redux/counterSlice";
 import Granim from "react-granim";
-
+import { styled } from "@mui/material/styles";
+const CustomTextField = styled(TextField)({
+  "& .MuiOutlinedInput-root": {
+    backgroundColor: "white",
+  },
+});
 function App() {
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   const [amount, setAmount] = useState("");
   return (
     <>
-      <Granim />
+      <Granim
+        stateTransitionSpeed={10000}
+        direction={"left-right"}
+        isPausedWhenNotInView={true}
+        states={{
+          "default-state": {
+            gradients: [
+              ["#E8F0F2", "#A2DBFA"],
+              ["#39A2DB", "#053742"],
+              ["#276678", "#1687A7"],
+              ["#5A92AF", "#5A92AF"],
+              ["#9CD9DE", "#D9F9F4"],
+              ["#F98404", "#F7FD04"],
+            ],
+          },
+        }}
+      />
       <Container maxWidth="sm">
         <Grid
           container
@@ -71,7 +92,7 @@ function App() {
                 arrow
                 placement="top"
               >
-                <TextField
+                <CustomTextField
                   type="number"
                   variant="outlined"
                   defaultValue={amount}
@@ -103,6 +124,7 @@ function App() {
           <Grid item>
             <Button
               variant="contained"
+              color="primary"
               onClick={() => dispatch(reset(Number(amount)))}
             >
               Reset
