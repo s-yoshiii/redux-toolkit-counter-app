@@ -35,9 +35,9 @@ function App() {
           "default-state": {
             gradients: [
               ["#E8F0F2", "#A2DBFA"],
-              ["#39A2DB", "#053742"],
-              ["#276678", "#1687A7"],
-              ["#5A92AF", "#5A92AF"],
+              ["#FFC1B6", "#FFDCB8"],
+              ["#FFEEBB", "#FDFFBC"],
+              ["#FFB26B", "#FF7B54"],
               ["#9CD9DE", "#D9F9F4"],
               ["#F98404", "#F7FD04"],
             ],
