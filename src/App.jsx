@@ -38,8 +38,7 @@ function App() {
               ["#FFC1B6", "#FFDCB8"],
               ["#FFEEBB", "#FDFFBC"],
               ["#FFB26B", "#FF7B54"],
-              ["#9CD9DE", "#D9F9F4"],
-              ["#F98404", "#F7FD04"],
+              ["#95D1CC", "#5584AC"],
             ],
           },
         }}
